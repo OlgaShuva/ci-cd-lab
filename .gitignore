@@ -1,0 +1,7 @@
+__pycache__/
+*.pyc
+notes.txt
+.pytest_cache/
+.ruff_cache/
+*.html
+docs/
