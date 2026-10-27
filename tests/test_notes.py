@@ -19,3 +19,11 @@ def test_search_notes():
     add_note("GitHub Actions")
     assert "Python CI" in search_notes("python")
     assert "GitHub Actions" not in search_notes("python")
+
+from notes import count_notes
+
+def test_count_notes():
+    clear_notes()
+    add_note("one")
+    add_note("two")
+    assert count_notes() == 2

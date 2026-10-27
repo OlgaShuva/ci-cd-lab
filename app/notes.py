@@ -11,3 +11,6 @@ def clear_notes():
 
 def search_notes(keyword):
     return [n for n in notes if keyword.lower() in n.lower()]
+
+def count_notes():
+    return len(notes)
