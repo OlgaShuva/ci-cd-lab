@@ -1,0 +1,31 @@
+name: Generate Docs
+
+on:
+  push:
+    branches: [ main ]
+
+jobs:
+  generate-docs:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+
+    - name: Set up Python 3.11
+      uses: actions/setup-python@v5
+      with:
+        python-version: '3.11'
+
+    - name: Generate HTML docs from docstrings
+      run: |
+        mkdir -p docs
+        python -m pydoc -w app.notes app.storage 2>/dev/null || true
+        mv *.html docs/ 2>/dev/null || echo "no html generated"
+
+    - name: Upload docs artifact
+      uses: actions/upload-artifact@v4
+      with:
+        name: project-docs
+        path: docs/
+        if-no-files-found: warn
