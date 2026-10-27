@@ -21,3 +21,7 @@ def search_notes(keyword):
 def count_notes():
     """Вернуть количество заметок."""
     return len(notes)
+
+def get_last_note():
+    """Вернуть последнюю добавленную заметку."""
+    return notes[-1] if notes else None
